@@ -194,7 +194,7 @@ class NeuralNet(nn.Module):
         )
 
         # skip connections...
-        # add a product of a dense layer with the hidden layer to the output of the the hidden layer
+        # add a product of a dense layer with the hidden layer to the output of the hidden layer
         self.linear1 = nn.Linear(in_features=DENSE_HIDDEN_UNITS, out_features=DENSE_HIDDEN_UNITS, bias=True)
         self.linear2 = nn.Linear(in_features=DENSE_HIDDEN_UNITS, out_features=DENSE_HIDDEN_UNITS, bias=True)
 
@@ -317,16 +317,18 @@ class HateSpeechClassifier:
         del glove_embeddings
         return embedding_matrix
 
-    def train(self, train_data_path: str):
+    def train(self, train_data_path: str, sample_frac: float = 1.0):
         """
         Trains self.num_models models on the training data.
 
         :param train_data_path: path to the CSV file with the training data
+        :param sample_frac: percentage of the training data to use for training - it is helpful to set this
+            lower for debugging, like 0.005, and then let it go back to 1.0 for training
         """
         self.set_seed(seed=self.seed)
 
         # read data, expect ~2Gb RAM for default training data from Jigsaw
-        train_df = pd.read_csv(train_data_path).sample(frac=0.005, random_state=self.seed)
+        train_df = pd.read_csv(train_data_path).sample(frac=sample_frac, random_state=self.seed)
         print(f"Training with {len(train_df):,} samples.")
 
         # pre-process data
@@ -383,9 +385,6 @@ class HateSpeechClassifier:
             for epoch in range(self.num_epochs):
                 start_time = time.time()
 
-                # increment learning rate schedule
-                scheduler.step()
-
                 model.train()  # set model in training mode
                 avg_loss = 0.
 
@@ -409,6 +408,9 @@ class HateSpeechClassifier:
 
                     # track the mean loss over all batches in this epoch
                     avg_loss += loss.item() / len(train_loader)
+
+                # increment learning rate schedule
+                scheduler.step()
 
                 model.eval()  # set model in eval/inference mode
                 elapsed_time = time.time() - start_time

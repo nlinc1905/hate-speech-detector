@@ -136,6 +136,7 @@ idea/
 *.csv
 *.pt
 *.pkl
+*.db
 **/models/*
 **/word_vectors/*
 !**/.gitkeep

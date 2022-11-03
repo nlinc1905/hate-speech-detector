@@ -12,7 +12,7 @@ from src.model import HateSpeechClassifier
 
 
 class Comment(BaseModel):
-    id: int
+    id: str
     comment_text: str
 
 
@@ -25,11 +25,11 @@ class CommentRequest(BaseModel):
             "example": {
                 "data": [
                     {
-                        "id": 1,
+                        "id": 'abc123',
                         "comment_text": "you are so fucking stupid",
                     },
                     {
-                        "id": 2,
+                        "id": 'def456',
                         "comment_text": "as eloquent as your comment was, i respectfully disagree",
                     }
                 ],
@@ -38,7 +38,7 @@ class CommentRequest(BaseModel):
 
 
 class Prediction(BaseModel):
-    id: int
+    id: str
     comment_text: str
     pred: float
 

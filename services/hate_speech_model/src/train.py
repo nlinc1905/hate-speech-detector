@@ -25,7 +25,7 @@ def download_and_extract_word_vectors(url: str, model_path: str):
     for _, _, files in os.walk(model_path):
         for file in files:
             if regex.match(file):
-                print(f"Word vectors found: {file}, skipping.")
+                print(f"Word vectors found: {file}, skipping download.")
                 exists = True
 
     if not exists:

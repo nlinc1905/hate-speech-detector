@@ -7,7 +7,10 @@ services:
         build: ./services/slack_app/
         # command: python src/app.py
         environment:
-            - PYTHONUNBUFFERED=1
+            PYTHONUNBUFFERED: 1
+            SLACK_BOT_TOKEN: ${SLACK_BOT_TOKEN}
+            SLACK_APP_TOKEN: ${SLACK_APP_TOKEN}
+            HATE_THRESHOLD: 0.4
         ports:
             - "3030:3030"
             - "8050:8050"
