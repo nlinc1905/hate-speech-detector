@@ -50,7 +50,7 @@ You will know startup has finished when you see this:
 ## What Counts as Hate Speech
 
 The hate speech classifier will return a probability between 0 and 1 for every message posted in Slack.  The default 
-threshold is 0.5.  You can make this higher to detect less hate speech, or lower to detect more hate speech.  Set the 
+threshold is 0.4.  You can make this higher to detect less hate speech, or lower to detect more hate speech.  Set the 
 threshold in docker-compose.yml.
 
 ## Integration with Slack
@@ -90,7 +90,7 @@ LSTM, and the decoder is a standard attention module.
 
 The model was inspired by reviewing several of the top scoring models for the Jigsaw competition, taking a few ideas 
 from each.  See [this one](https://www.kaggle.com/code/bminixhofer/deterministic-neural-networks-using-pytorch/notebook) 
-and [this one](https://www.kaggle.com/code/bminixhofer/simple-lstm-pytorch-version/notebook), both by Benejamin 
+and [this one](https://www.kaggle.com/code/bminixhofer/simple-lstm-pytorch-version/notebook), both by Benjamin 
 Minixhofer, and [this one](https://www.kaggle.com/code/shujian/single-rnn-with-4-folds-clr/notebook) by Shujian Liu. 
 
 Refer to the Jupyter notebooks in services/hate_speech_model/src/notebooks to see draft versions of the models and 
