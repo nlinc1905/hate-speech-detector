@@ -41,10 +41,11 @@ Follow the basic, [getting-started tutorial](https://slack.dev/bolt-python/tutor
 2. Add features & functionality -> bots
 3. Add scopes for: channels:join, channels:read, chat:write, chat:write:public, chat:write:customize, groups:read, 
 im:read, mprim:read, metadata.message.read, users.profile.read, users:read
-4. Install Oauth and copy the token, client ID and client secret
+4. Install OAuth and copy the bot user OAuth token
 5. Add an app level token for connections:write with whatever name you want, then copy this token too
 6. Enable socket mode
 7. Subscribe to bot events with message.channels, message.groups, message.im, message.mpim
+8. Install the app to a workspace
 
 Once the app has been set up in your Slack account and the Slack Bolt app is running in Docker, you are ready to 
 go.  Start sending messages and watch your bot jump into action when hate speech is detected.
