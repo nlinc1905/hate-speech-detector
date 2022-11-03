@@ -6,8 +6,8 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 from sqlite_utils import setup_db, update_db
 
 
-SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN", default="xoxb-4275464327697-4256230457206-WimlAdlGd8HniWFL2z2wGTIy")
-SLACK_APP_TOKEN = os.environ.get("SLACK_APP_TOKEN", default="xapp-1-A047MRUCL05-4286592031760-9820efd2eca90e5a7c8147d92086ba01a73255807fcc854a14777a781ac0c485")
+SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN", default="xoxb-")
+SLACK_APP_TOKEN = os.environ.get("SLACK_APP_TOKEN", default="xapp-")
 
 
 setup_db()
