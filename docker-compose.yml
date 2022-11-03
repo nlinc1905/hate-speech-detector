@@ -1,0 +1,27 @@
+version: '3'  # Docker Compose version
+
+# Set up services/containers
+services:
+
+    slack_app:
+        build: ./services/slack_app/
+        # command: python src/app.py
+        environment:
+            - PYTHONUNBUFFERED=1
+        ports:
+            - "3030:3030"
+            - "8050:8050"
+        volumes:
+            - .:/app
+        depends_on:
+            - model_api
+
+    model_api:
+        build: ./services/hate_speech_model/
+        command: uvicorn src.api:app --host 0.0.0.0 --port 8000
+        environment:
+            - PYTHONUNBUFFERED=1
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/model

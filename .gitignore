@@ -127,3 +127,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Pycharm
+.idea
+idea/
+
+# Data and models
+*.csv
+*.pt
+*.pkl
+**/models/*
+**/word_vectors/*
+!**/.gitkeep
